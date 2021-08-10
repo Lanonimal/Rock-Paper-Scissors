@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            const options = ["Rock", "Paper", "Scissors"];
+            const random_option = Math.floor(Math.random() * options.length);
+            return(options[random_option])
+        }
+
+        const computerSelection = computerPlay();
+        
+        /*let playerInput = prompt("Choose Rock, Paper or Scissors")
+        function capitalizeFirstLetter(playerInput) {
+            return playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
+        }
+        let playerSelection = capitalizeFirstLetter(playerInput)*/ 
+        let playerSelection = "Rock";
+        
+
+        let computerScore = 0;
+        let playerScore = 0;
+        let gamesPlayed = 0;
+        let roundWinner = ''
+
+        function play_round(playerSelection, computerSelection) {
+            if (computerSelection === "Rock" && playerSelection === "Rock") {
+                return("It\'s a tie!")
+                let roundWinner = 'tie'
+            }
+            if (computerSelection === "Rock" && playerSelection === "Paper") {
+                return("You win! Paper beats Rock")
+                let playerscore = playerScore++
+            }
+            if (computerSelection === "Rock" && playerSelection === "Scissors") {
+                return("You lose! Rock beats Scissors")
+                computerScore++
+            }
+            if (computerSelection === "Paper" && playerSelection === "Rock") {
+                return("You lose! Paper beats Rock")
+                computerScore++
+            }
+            if (computerSelection === "Paper" && playerSelection === "Paper") {
+                return("It\'s a tie!")
+            }
+            if (computerSelection === "Paper" && playerSelection === "Scissors") {
+                return("You win! Scissors beat Paper")
+                playerScore++
+            }
+            if (computerSelection === "Scissors" && playerSelection === "Rock") {
+                return("You win! Rock beats Scissors")
+                playerScore++
+            }
+            if (computerSelection === "Scissors" && playerSelection === "Paper") {
+                return("You lose! Scissors beat Paper")
+                computerScore++
+            }
+            if (computerSelection === "Scissors" && playerSelection === "Scissors") {
+                return("It\'s a tie!")
+            }
+              
+        }
+
+        /*console.log(play_round(playerSelection, computerSelection))*/ 
+
+        /*let playerWins = 0;
+        let computerWins = 0;
+        if (computerSelection === "Rock" && playerSelection === "Paper") {
+            playerWins = playerWins + 1 
+        }
+        if (computerSelection === "Rock" && playerSelection === "Scissors") {
+            computerWins = computerWins + 1
+        }
+
+        console.log(playerWins)
+        console.log(computerWins)*/
+
+        /*function game() {
+            return(play_round(playerSelection, computerSelection))
+            return(play_round(playerSelection, computerSelection))
+            return(play_round(playerSelection, computerSelection))
+            return(play_round(playerSelection, computerSelection))
+            return(play_round(playerSelection, computerSelection))
+        }*/ 
+
+        for (let i = 1; i < 1000; i++) {
+            play_round(playerSelection, computerSelection)
+            
+        }
+
+        function winner() {
+            if (playerScore == 5 || computerScore == 5) {
+                if (playerScore > computerScore) {
+                return("Congratulations! You won the game")
+            }
+
+            else if (playerScore == computerScore) {
+                return("Good game! Nobody won the game")
+            }
+
+            else {
+                return("Oof! Get them next time" )
+                }
+            }
+        }
+            
+            
+        console.log(playerScore)
+        console.log(computerScore)
+        console.log(play_round(playerSelection, computerSelection))
+        /*console.log(game())*/
+        console.log(winner())
+        console.log(roundWinner)
+        
+    </script>
+</body>
+</html>
+
