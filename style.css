@@ -1,0 +1,102 @@
+body {
+    background-color:cornflowerblue;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#h1text {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+}
+#h2text {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#buttonz {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#button {
+    width: 200px;
+    height: 100px;
+    border: 1px solid white;
+    margin: 0 25px;
+    background-color:cornflowerblue;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+#button:hover {
+    cursor:pointer;
+    transform: scale(1.1);
+    box-shadow:0 0 80px 10px;
+}
+
+#roundResult {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#scoreLabel,
+#scoreContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    font-size: 30px;
+    padding: 0 40px;
+    color: white;
+    font-weight: bold;
+}
+.score {
+    font-size: 80px;
+    padding: 0 40px;
+    color: white;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+#gameResult {
+    text-align: center;
+    margin-top: 60px;
+    color:white;
+    font-size: 60px;
+    font-weight: bold;
+    padding: 0 60px 0 60px;
+}
+
+#endAlert.disappear, 
+.disappear {
+    display: none;
+}
+
+#endAlert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.retryButtonStyle {
+    display: inline-block;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: white;
+    background-color:darkslateblue;
+    border-color: white;
+    padding: 10px 10px 5px 10px;
+    
+}
+#retryButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

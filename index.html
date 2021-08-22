@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div id="h1text">
+        <h1>Can you beat the AI?</h1>
+    </div>
+    <div id="h2text">
+        <h2>Select your warrior!</h2>
+    </div>
+
+    <div id="buttonz">
+    <button class="rockButton" id="button">
+        Rock
+    </button>
+    <button class="paperButton" id="button">
+        Paper
+    </button>
+    <button class="scissorsButton" id="button">
+        Scissors
+    </button>
+    </div>
+
+    <div id="roundResult"></div>
+    <div id="scoreLabel">
+        <p class="label">You</p>
+        <p class="label">AI</p>
+    </div>
+    <div id="scoreContainer">
+        <div id="playerScore" class="score">0</div>
+        <div id="computerScore" class="score">0</div>
+    </div>
+    <div id="gameResult"></div>
+    <div id="endAlert" class="disappear">
+        <a id="retryButton"></a>
+    </div>
+
+    <script>
+        let computerScore = 0;
+        let playerScore = 0;
+        let playerSelection;
+
+        const rockButton = document.querySelector(".rockButton");
+        const paperButton = document.querySelector(".paperButton");
+        const scissorsButton = document.querySelector(".scissorsButton");
+        const gameResultt = document.querySelector("#gameResult");
+        const roundResultt = document.querySelector("#roundResult");
+        const retryBtn = document.querySelector("#retryButton");
+        
+        rockButton.addEventListener("click", () => {
+            playerSelection = "Rock";
+            play_round(playerSelection, computerSelection);
+            if (playerScore == 5 || computerScore == 5) {
+                winner();
+                endAlert.classList.remove("disappear");
+                retryButton.classList.add("retryButtonStyle");
+                retryBtn.innerText = "Play again!"
+            }
+        })
+        paperButton.addEventListener("click", () => {
+            playerSelection = "Paper";
+            play_round(playerSelection, computerSelection);
+            if (playerScore == 5 || computerScore == 5) {
+                winner();
+                endAlert.classList.remove("disappear");
+                retryButton.classList.add("retryButtonStyle");
+                retryBtn.innerText = "Play again!"
+            }
+        })
+        scissorsButton.addEventListener("click", () => {
+            playerSelection = "Scissors";
+            play_round(playerSelection, computerSelection);
+            if (playerScore == 5 || computerScore == 5) {
+                winner();
+                endAlert.classList.remove("disappear");
+                retryButton.classList.add("retryButtonStyle");
+                retryBtn.innerText = "Play again!"
+            }
+        })
+
+        function computerPlay() {
+            const options = ["Rock", "Paper", "Scissors"];
+            const random_option = Math.floor(Math.random() * options.length);
+            return(options[random_option])
+        }
+
+        let computerSelection = computerPlay();
+
+        /*Function that plays 1 round and adds 1 to the winner's score*/
+        function play_round(playerSelection, computerSelection) {
+            computerSelection = computerPlay();
+            console.log("player selected: " + playerSelection);
+            console.log("computer selected: " + computerSelection);
+
+            if (computerSelection === "Rock" && playerSelection === "Rock") {
+                roundResultt.textContent = "It\'s a tie!"
+                
+            }
+            else if (computerSelection === "Rock" && playerSelection === "Paper") {
+                playerScore++
+                roundResultt.textContent = "You win! Paper beats Rock"
+                keepPlayerScore();
+                
+            }
+            else if (computerSelection === "Rock" && playerSelection === "Scissors") {
+                computerScore++
+                roundResultt.textContent = "You lose! Rock beats Scissors"
+                keepCompScore();
+                
+            }
+            else if (computerSelection === "Paper" && playerSelection === "Rock") {
+                computerScore++
+                roundResultt.textContent = "You lose! Paper beats Rock"
+                keepCompScore();
+                
+            }
+            else if (computerSelection === "Paper" && playerSelection === "Paper") {
+                roundResultt.textContent = "It\'s a tie!"
+            }
+            else if (computerSelection === "Paper" && playerSelection === "Scissors") {
+                playerScore++
+                roundResultt.textContent = "You win! Scissors beat Paper"
+                keepPlayerScore();
+                
+            }
+            else if (computerSelection === "Scissors" && playerSelection === "Rock") {
+                playerScore++
+                roundResultt.textContent = "You win! Rock beats Scissors"
+                keepPlayerScore();
+                
+            }
+            else if (computerSelection === "Scissors" && playerSelection === "Paper") {
+                computerScore++
+                roundResultt.textContent = "You lose! Scissors beat Paper"
+                keepCompScore();
+                
+            }
+            else {
+                roundResultt.textContent = "It\'s a tie!"
+            }
+              
+        }
+
+        /*Function that shows who won*/
+        function winner() { 
+                if (playerScore > computerScore) {
+                gameResultt.textContent = "Congratulations! You won the game"
+            }
+
+            else if (playerScore == computerScore) {
+                gameResultt.textContent = "Good game! Nobody won the game" 
+            }
+
+            else {
+                gameResultt.textContent = "Oof! Get them next time" 
+                }
+            }
+
+
+        function keepPlayerScore() {
+            let playerScoreBox = document.querySelector("#playerScore");
+            playerScoreBox.textContent = playerScore;
+        }
+        function keepCompScore() {
+            let cpuScoreBox = document.querySelector("#computerScore");
+            cpuScoreBox.textContent = computerScore;
+        }
+
+        retryBtn.addEventListener("click", () => {
+            endAlert.classList.add("disappear");
+            resetGame();
+        })
+        function resetGame() {
+            gameResultt.textContent = "";
+            playerScore = 0;
+            computerScore = 0;
+            keepPlayerScore();
+            keepCompScore();
+        }
+    </script>
+</body>
+</html>
+
